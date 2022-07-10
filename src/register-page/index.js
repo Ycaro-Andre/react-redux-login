@@ -13,11 +13,6 @@ function RegisterPage() {
     const [submitted, setSubmitted] = useState(false);
     const dispatch = useDispatch();
 
-    // faz o logout
-    useEffect(() => {
-        dispatch(userActions.logout());
-    }, []);
-
     function handleChange(e) {
         const { name, value } = e.target;
         setUser(user => ({ ...user, [name]: value }));

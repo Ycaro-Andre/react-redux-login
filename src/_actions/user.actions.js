@@ -43,7 +43,11 @@ function register(user) {
             .then(
                 user => { 
                     dispatch({ type: 'REGISTER_USER_SUCCESS', user });
-                    history.push('/login');
+
+                    //Verifica se tem usuário logado, se sim, vai para a listagem, senão, volta para o login
+                    !localStorage.getItem('user') ? history.push('/login') : history.push('/');
+                    console.log(localStorage.getItem('user'));
+                    
                     dispatch(alertActions.success('Usuário registrado com sucesso'));
                 },
                 error => {
